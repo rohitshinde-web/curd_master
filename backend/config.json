@@ -1,0 +1,11 @@
+{
+	"validation_methods": ["api", "table", "encryption"],
+	"consent_scopes": ["client.login", "client.ekyc"],
+	"resources": {
+		"partner_master": ["partner_id"],
+		"partner_offers": ["id"],
+		"partner_emp_list": ["id"],
+		"microsite_master": ["microsite_id"],
+		"consent": ["id"]
+	}
+}
