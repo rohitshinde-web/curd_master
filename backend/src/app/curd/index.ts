@@ -175,4 +175,31 @@ export const Curd:RoutesBuilder = (router) =>{
 			"/curd/:customer_id",
 			controllers.getDataById,
 		);
+
+				/**
+	 * @openapi
+	 *  /curd/{customer_id}:
+	 *   delete:
+	 *     tags:
+	 *       - curd
+	 *     summary: Get a customer by id
+	 *     description: Retrieves a specific customers record by id.
+	 *     parameters:
+	 *       - in: path
+	 *         name: customer_id
+	 *         required: true
+	 *         schema:
+	 *           type: string
+	 *         description: The customer id.
+	 *     responses:
+	 *       '200':
+	 *         description: Successful response
+	 *       '404':
+	 *         description: Audit not found
+	 */
+
+				router.delete(
+					"/curd/:customer_id",
+					controllers.deleteDataById,
+				);
 }

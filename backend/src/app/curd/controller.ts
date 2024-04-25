@@ -62,9 +62,25 @@ export const updateData: RequestHandler = async (req,res,next) =>{
      const customer_id = await req.params.customer_id;
 	 const result = await knex_connection("customers").update(req.body).where({customer_id:customer_id});
 	 if(!result){
-		return res.status(StatusCodes.BAD_REQUEST).json({error:"something wentWrorn"})
+		return res.status(StatusCodes.BAD_REQUEST).json({error:"something wentWrorng"})
 	 }
 	 return res.status(StatusCodes.CREATED).json({message:'success'});
+	}catch(error){
+		console.log('3')
+		logger("curd").error(error);
+		return res.status(StatusCodes.BAD_REQUEST).json(error)
+	}
+}
+
+export const deleteDataById: RequestHandler = async (req,res,next) =>{
+	try{
+		const customer_id = await req.params.customer_id;
+		const result = await knex_connection("customers").delete().where({customer_id:customer_id});
+
+		if(!result){
+			return res.status(StatusCodes.BAD_REQUEST).json({error:"something wentWrorng"})
+		}
+		return res.status(StatusCodes.CREATED).json({message:'success'});
 	}catch(error){
 		console.log('3')
 		logger("curd").error(error);
