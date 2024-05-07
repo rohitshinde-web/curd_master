@@ -2,6 +2,8 @@ import * as controllers  from './controller';
 import {RoutesBuilder } from '../../config/routes_config';
 import {curdSchema} from './schema';
 import { validationPaginationParams } from '../middlewares/pagination';
+import { authenticate } from '../middlewares/validator';
+import { auth } from '../middlewares/tokenValidator';
 
 export const Curd:RoutesBuilder = (router) =>{
     	/**
@@ -157,6 +159,8 @@ export const Curd:RoutesBuilder = (router) =>{
 	 *       - curd
 	 *     summary: Get a customer by id
 	 *     description: Retrieves a specific customers record by id.
+	 *     security:
+     *       - bearerAuth: []
 	 *     parameters:
 	 *       - in: path
 	 *         name: customer_id
@@ -173,6 +177,7 @@ export const Curd:RoutesBuilder = (router) =>{
 
 		router.get(
 			"/curd/:customer_id",
+			auth,
 			controllers.getDataById,
 		);
 

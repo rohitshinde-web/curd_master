@@ -7,7 +7,7 @@ import {
 	getServerUrl,
 } from "../../utils/server_url";
 import { RequestHandler } from "express";
-// import packageJson from "../../../package.json";
+// import packageJson from "../../../ .json";
 
 let openapiSpecification: object;
 
@@ -29,6 +29,8 @@ const getOpenApiSpecification = () => {
 						name: "HDFC Bank Ltd",
 						url: "https://www.hdfcbank.com",
 					},
+					
+				
 					termsOfService:
 						"https://www.hdfcbank.com/personal/useful-links/terms-and-conditions",
 					privacyPolicy:
@@ -45,9 +47,27 @@ const getOpenApiSpecification = () => {
 						url: getHdfcAdminServerUrl() + getServerBasePath(),
 					},
 				],
+				components: {
+					securitySchemes: {
+						jwt: {
+							type: 'http',
+							scheme: 'bearer',
+							bearerFormat: 'JWT',
+						},
+						
+					},
+					security: [{
+						bearerAuth: []
+					  }],
+					},
 				tags: [
 					{
 						name: "curd",
+						description:
+							"The Health API provides a straightforward health check endpoint, allowing monitoring systems to assess the system's well-being.",
+					},
+					{
+						name: "auth",
 						description:
 							"The Health API provides a straightforward health check endpoint, allowing monitoring systems to assess the system's well-being.",
 					},

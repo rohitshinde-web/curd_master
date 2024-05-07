@@ -5,6 +5,7 @@ import { Curd } from "./app/curd";
 // import { FilesRoutes } from "./app/files";
 import { OpenApiRoutes } from "./app/openApi";
 import { contants } from "./config/constants";
+import { Auth } from "./app/auth";
 // import { PartnerRoutes } from "./app/partner";
 // import { AuditRoutes } from "./app/audit";
 // import { AdminUser } from "./app/admin_user";
@@ -12,6 +13,7 @@ import { contants } from "./config/constants";
 export const getRoutes = (): RoutesBuilders => {
 	const registeredRoutes: RoutesBuilders = {
 		Curd,
+		Auth
 		// PartnerRoutes: [PartnerRoutes, "/partner"],
 		// MasterRoutes: [MasterRoutes, "/masters"],
 		// FilesRoutes,

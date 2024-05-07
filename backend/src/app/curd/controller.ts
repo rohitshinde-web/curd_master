@@ -31,7 +31,7 @@ export const getDataById: RequestHandler = async (req,res,next) => {
 	try {
      const customer_id = await req.params.customer_id;
     console.log('customer_id',customer_id)
-	 const result = await knex_connection("customers").select("*").where({customer_id:customer_id}).first();
+	 const result = await knex_connection("customers").select('*').where({customer_id:customer_id}).first();
 	 console.log('result',JSON.parse(JSON.stringify(result)))
 	return res.status(200).json(result)
 	}
